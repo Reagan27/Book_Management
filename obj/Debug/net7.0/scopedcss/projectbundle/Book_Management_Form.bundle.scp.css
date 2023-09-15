@@ -1,31 +1,4 @@
 /* /Pages/Index.razor.rz.scp.css */
-namespace Book_Management_Form.Pages
-
-h1[b-theaxqa989] {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 16px;
-}
-
-button[b-theaxqa989] {
-    margin-bottom: 8px;
-}
-
-table[b-theaxqa989] {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 16px;
-}
-
-th[b-theaxqa989], td[b-theaxqa989] {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
-}
-
-th[b-theaxqa989] {
-    font-weight: bold;
-}
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-d5sm3fkwj5] {
     position: relative;

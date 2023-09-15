@@ -1,49 +1,58 @@
-﻿@using Book_Management_Form.Models
+﻿<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Add Book</h2>
+            <hr />
+            <EditForm Model="newBook" OnValidSubmit="AddNewBook">
+                <DataAnnotationsValidator />
 
-<div>
-    <h2>@(BookToEdit == null ? "Add Book" : "Edit Book")</h2>
+                <div class="form-group">
+                    <label for="Title">Title:</label>
+                    <InputText id="Title" @bind-Value="newBook.Title" class="form-control" />
+                    <ValidationMessage For="@(() => newBook.Title)" class="text-danger" />
+                </div>
 
-    <label>Title:</label>
-    <input @bind="book.Title" />
+                <div class="form-group">
+                    <label for="Description">Description:</label>
+                    <InputTextArea id="Description" @bind-Value="newBook.Description" class="form-control" />
+                    <ValidationMessage For="@(() => newBook.Description)" class="text-danger" />
+                </div>
 
-    <label>Description:</label>
-    <input @bind="book.Description" />
+                <div class="form-group">
+                    <label for="Authors">Authors:</label>
+                    @foreach (var author in newBook.Authors)
+                    {
+                        <InputText @bind-Value="@author.Name" class="form-control mb-2" />
+                        <ValidationMessage For="@(() => author.Name)" class="text-danger" />
+                    }
+                </div>
 
-    <label>Authors (comma-separated):</label>
-    <input @bind="authorInput" />
-    <button @onclick="AddAuthor">Add Author</button>
-
-    <ul>
-        @foreach (var author in book.Authors)
-        {
-            <li>@author</li>
-        }
-    </ul>
-
-    <button @onclick="SubmitForm">@(BookToEdit == null ? "Add" : "Save Changes")</button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Add Book</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
 </div>
 
 @code {
-    private BookDTOs book = new BookDTOs();
-    private string authorInput;
+    private BookDto newBook { get; set; } = new BookDto { Id = Guid.NewGuid() };
 
     [Parameter]
-    public BookDTOs BookToEdit { get; set; }
+    public EventCallback<BookDto> OnBookAdded { get; set; }
 
     [Parameter]
-    public EventCallback<BookDTOs> OnSubmit { get; set; }
+    public EventCallback<BookDto> OnBookEdited { get; set; }
 
-    private void SubmitForm()
+    private async Task AddNewBook()
     {
-        OnSubmit.InvokeAsync(book);
+        await OnBookAdded.InvokeAsync(newBook);
+        newBook = new BookDto { Id = Guid.NewGuid() };
     }
 
-    private void AddAuthor()
+    private async Task EditBook()
     {
-        if (!string.IsNullOrWhiteSpace(authorInput))
-        {
-            book.Authors.Add(authorInput.Trim());
-            authorInput = string.Empty;
-        }
+        await OnBookEdited.InvokeAsync(newBook);
+        newBook = new BookDto { Id = Guid.NewGuid() };
     }
 }
