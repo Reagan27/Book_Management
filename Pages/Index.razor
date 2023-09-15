@@ -1,0 +1,95 @@
+﻿@page "/"
+@using Book_Management_Form.Models
+@using System.Linq
+
+<h1>Book Management</h1>
+
+<button @onclick="ShowAddForm">Add Book</button>
+
+@if (isAdding || isEditing)
+{
+    <EditAddBookForm @ref="addEditFormRef" OnSubmit="SaveBook" @if(isEditing) BookToEdit="bookToEdit" />
+}
+
+@if (books.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Authors</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in books)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Description</td>
+                    <td>@string.Join(", ", book.Authors)</td>
+                    <td>
+                        <button @onclick="() => EditBook(book)">Edit</button>
+                        <button @onclick="() => DeleteBook(book)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No books available.</p>
+}
+
+@code {
+    private List<BookDTOs> books = new List<BookDTOs>();
+    private bool isAdding = false;
+    private bool isEditing = false;
+    private BookDTOs bookToEdit;
+    private EditAddBookForm addEditFormRef;
+
+    private void ShowAddForm()
+    {
+        isAdding = true;
+        isEditing = false;
+        bookToEdit = null;
+        addEditFormRef.ClearForm();
+    }
+
+    private void EditBook(BookDTOs book)
+    {
+        isAdding = false;
+        isEditing = true;
+        bookToEdit = book;
+        addEditFormRef.BookToEdit = book;
+        addEditFormRef.ClearForm();  // Clear the form to refresh the data
+    }
+
+    private void DeleteBook(BookDTOs book)
+    {
+        books.Remove(book);
+    }
+
+    private void SaveBook(BookDTOs book)
+    {
+        if (isAdding)
+        {
+            books.Add(book);
+        }
+        else if (isEditing)
+        {
+            var existingBook = books.FirstOrDefault(b => b == bookToEdit);
+            if (existingBook != null)
+            {
+                existingBook.Title = book.Title;
+                existingBook.Description = book.Description;
+                existingBook.Authors = book.Authors;
+            }
+        }
+
+        isAdding = false;
+        isEditing = false;
+    }
+}

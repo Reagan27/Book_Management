@@ -1,0 +1,49 @@
+﻿@using Book_Management_Form.Models
+
+<div>
+    <h2>@(BookToEdit == null ? "Add Book" : "Edit Book")</h2>
+
+    <label>Title:</label>
+    <input @bind="book.Title" />
+
+    <label>Description:</label>
+    <input @bind="book.Description" />
+
+    <label>Authors (comma-separated):</label>
+    <input @bind="authorInput" />
+    <button @onclick="AddAuthor">Add Author</button>
+
+    <ul>
+        @foreach (var author in book.Authors)
+        {
+            <li>@author</li>
+        }
+    </ul>
+
+    <button @onclick="SubmitForm">@(BookToEdit == null ? "Add" : "Save Changes")</button>
+</div>
+
+@code {
+    private BookDTOs book = new BookDTOs();
+    private string authorInput;
+
+    [Parameter]
+    public BookDTOs BookToEdit { get; set; }
+
+    [Parameter]
+    public EventCallback<BookDTOs> OnSubmit { get; set; }
+
+    private void SubmitForm()
+    {
+        OnSubmit.InvokeAsync(book);
+    }
+
+    private void AddAuthor()
+    {
+        if (!string.IsNullOrWhiteSpace(authorInput))
+        {
+            book.Authors.Add(authorInput.Trim());
+            authorInput = string.Empty;
+        }
+    }
+}
