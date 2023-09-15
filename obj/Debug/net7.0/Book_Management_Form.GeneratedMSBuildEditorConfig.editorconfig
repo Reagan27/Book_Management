@@ -9,33 +9,33 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = Book_Management_Form
 build_property.RootNamespace = Book_Management_Form
-build_property.ProjectDir = C:\Users\Lenovo Ideapad S340\source\repos\Book_Management_Form\
+build_property.ProjectDir = C:\Users\Lenovo Ideapad S340\Source\Repos\Book_Management\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Lenovo Ideapad S340\source\repos\Book_Management_Form
+build_property.MSBuildProjectDirectory = C:\Users\Lenovo Ideapad S340\Source\Repos\Book_Management
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Lenovo Ideapad S340/source/repos/Book_Management_Form/App.razor]
+[C:/Users/Lenovo Ideapad S340/Source/Repos/Book_Management/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo Ideapad S340/source/repos/Book_Management_Form/Shared/EditAddBookForm.razor]
+[C:/Users/Lenovo Ideapad S340/Source/Repos/Book_Management/Shared/EditAddBookForm.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEVkaXRBZGRCb29rRm9ybS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo Ideapad S340/source/repos/Book_Management_Form/_Imports.razor]
+[C:/Users/Lenovo Ideapad S340/Source/Repos/Book_Management/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo Ideapad S340/source/repos/Book_Management_Form/Pages/Index.razor]
+[C:/Users/Lenovo Ideapad S340/Source/Repos/Book_Management/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-theaxqa989
 
-[C:/Users/Lenovo Ideapad S340/source/repos/Book_Management_Form/Shared/MainLayout.razor]
+[C:/Users/Lenovo Ideapad S340/Source/Repos/Book_Management/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-d5sm3fkwj5
 
-[C:/Users/Lenovo Ideapad S340/source/repos/Book_Management_Form/Shared/NavMenu.razor]
+[C:/Users/Lenovo Ideapad S340/Source/Repos/Book_Management/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-6zu1xg1ptj
